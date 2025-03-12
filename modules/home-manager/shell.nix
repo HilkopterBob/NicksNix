@@ -15,6 +15,7 @@
     tmux = {
       enable = true;
     };
+
   };
 
 }

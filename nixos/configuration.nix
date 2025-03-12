@@ -19,6 +19,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
+    backupFileExtension = ".home-manager.bak";
     users = {
       # Import your home-manager configuration
       nick = import ../home-manager/home.nix;
@@ -99,6 +100,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nick = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Nick von Podewils";
     extraGroups = [ "networkmanager" "wheel" ];
