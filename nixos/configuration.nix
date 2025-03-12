@@ -129,6 +129,9 @@
     git
     vscode
     zsh
+    zsh-fzf-tab
+    discord
+    betterdiscordctl
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
