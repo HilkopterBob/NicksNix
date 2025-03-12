@@ -134,7 +134,7 @@
     zsh
     zsh-fzf-tab
     discord
-    betterdiscordctl
+    fastfetch
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
