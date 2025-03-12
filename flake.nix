@@ -8,6 +8,9 @@
     # Nix-Colors
     nix-colors.url = "github:misterio77/nix-colors";
 
+    # Catppucin
+    catppuccin.url = "github:catppuccin/nix";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +20,7 @@
     self,
     nixpkgs,
     home-manager,
+    catppuccin,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -25,7 +29,6 @@
       "x86_64-linux"
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
-    
   in {
 
     # Formatter for your nix files, available through 'nix fmt'
@@ -48,6 +51,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
+          catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
         ];
       };
