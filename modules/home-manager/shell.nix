@@ -11,6 +11,10 @@
       enable = true;
       oh-my-zsh.enable = true;
     };
+
+    tmux = {
+      enable = true;
+    };
   };
 
 }
