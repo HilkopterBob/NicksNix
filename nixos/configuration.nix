@@ -19,6 +19,7 @@
     ];
 
   catppuccin.enable = true;
+  catppuccin.flavor = "mocha";
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     backupFileExtension = ".home-manager.bak";
