@@ -51,6 +51,11 @@ in
       userEmail = "podewils08@gmail.com";
     };
 
+    kitty = {
+      enable = true;
+      shellIntegration.enableZshIntegration = true;
+    };
+
     zsh = {
       enable = true;
       syntaxHighlighting.enable = true;
