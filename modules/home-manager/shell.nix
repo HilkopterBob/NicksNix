@@ -55,6 +55,20 @@ in
       enable = true;
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
+      shellAliases = {
+        la = "ls -la";
+        ".." = "cd ..";
+        rebuild = "sudo nixos-rebuild switch --flake /home/nick/NicksNix/.#nixos";
+      };
+      initExtra = ''
+        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      '';
+    };
+
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      tmux.enableShellIntegration = true;
     };
 
     tmux = {
