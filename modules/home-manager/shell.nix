@@ -56,9 +56,11 @@ in
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
       shellAliases = {
-        la = "ls -la";
         ".." = "cd ..";
         rebuild = "sudo nixos-rebuild switch --flake /home/nick/NicksNix/.#nixos";
+        cd = "zoxide";
+        ls = "eza --icons";
+        cat = "bat";
       };
       initExtra = ''
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
@@ -98,6 +100,20 @@ in
           bright-white = color.subtext1;
         };
       };
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    eza = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    bat = {
+      enable = true;
     };
   };
 

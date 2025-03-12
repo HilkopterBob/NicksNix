@@ -8,6 +8,7 @@
   lib,
   config,
   pkgs,
+  catppuccin,
   ...
 }:
 {
@@ -17,6 +18,7 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
+  catppuccin.enable = true;
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     backupFileExtension = ".home-manager.bak";
