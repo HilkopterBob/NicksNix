@@ -63,12 +63,13 @@ in
       shellAliases = {
         ".." = "cd ..";
         rebuild = "sudo nixos-rebuild switch --flake /home/nick/NicksNix/.#nixos";
-        cd = "zoxide";
+        cd = "z";
         ls = "eza --icons";
         cat = "bat";
       };
       initExtra = ''
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+        eval "$(zoxide init zsh)"
       '';
     };
 
