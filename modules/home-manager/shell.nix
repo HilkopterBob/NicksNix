@@ -123,4 +123,16 @@ in
     };
   };
 
+  fonts = {
+    packages = with pkgs; [nerdfonts];
+    fontconfig = {
+      enable = true;
+      defaultFonts.emoji = ["nerdfonts"];
+      defaultFonts.monospace = ["nerdfonts"];
+      defaultFonts.sansSerif = ["nerdfonts"];
+      defaultFonts.serif = ["nerdfonts"];
+    };
+  };
+
+
 }
