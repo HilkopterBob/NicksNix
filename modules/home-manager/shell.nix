@@ -121,18 +121,26 @@ in
     bat = {
       enable = true;
     };
+
   };
 
   fonts = {
-    packages = with pkgs; [nerdfonts];
     fontconfig = {
       enable = true;
-      defaultFonts.emoji = ["nerdfonts"];
-      defaultFonts.monospace = ["nerdfonts"];
-      defaultFonts.sansSerif = ["nerdfonts"];
-      defaultFonts.serif = ["nerdfonts"];
     };
   };
+
+  home.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
+    font-awesome
+    liberation_ttf
+    mplus-outline-fonts.githubRelease
+    nerdfonts
+    noto-fonts
+    noto-fonts-emoji
+    proggyfonts
+  ];
 
 
 }
