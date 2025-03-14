@@ -84,13 +84,11 @@
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-  security = {
-    rtkit.enable = true;
-    pam.services.kwallet = {
-      name = "kwallet";
-      enableKwallet = true;
-    };
-  };
+
+  
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;

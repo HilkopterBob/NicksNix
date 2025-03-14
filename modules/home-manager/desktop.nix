@@ -17,7 +17,7 @@ in {
       "monitor" = "eDP-1, 1920x1080@60, 0x0, 1";
 
       # auto-starts
-      "exec-once" = "pkill waybar && waybar";
+      "exec-once" = "waybar && pkill waybar";
       "$mod" = "SUPER";
       bind = [
         # Launcher binds
