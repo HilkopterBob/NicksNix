@@ -84,7 +84,13 @@
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    pam.services.kwallet = {
+      name = "kwallet";
+      enableKwallet = true;
+    };
+  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -159,6 +165,17 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = false;
+      settings = {
+        default-cache-ttl = 2592000;
+        max-cache-ttl = 2592000;
+      };
+    };
+  };
 
   # List services that you want to enable:
 
