@@ -1,0 +1,3 @@
+- kde connect
+- keyboard brightness ctl
+- keyboard volume ctl
