@@ -7,13 +7,63 @@
 }: let
   nc = import ../fonts/nerd-char.nix {inherit config;};
 in {
-  programs = {
+  # Needed for Electron Apps like Discord and Obsidian
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
 
-    # eww = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   configDir = ../../home-manager/dotfiles/eww/bar;
-    # };
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = {
+      # monitors
+      "monitor" = "eDP-1, 1920x1080@60, 0x0, 1";
+
+      # auto-starts
+      "exec-once" = "pkill waybar && waybar";
+      "$mod" = "SUPER";
+      bind = [
+        # Launcher binds
+        "$mod, W, exec, firefox"
+        "$mod, K, exec, kitty"
+        "$mod, $mod_L, exec, pkill rofi || rofi -show drun -modi drun,filebrowser,run,window"
+        
+        # Function Binds
+        "$mod, Q, killactive"
+        #TODO: Add Lockscreen!
+        "CTRL ALT, L, exec, $scriptsDir/LockScreen.sh"
+
+
+        # Hyprland Binds
+        "$mod, F, fullscreen"
+        "$mod SHIFT, F, togglefloating"
+        "$mod, G, togglegroup" 
+
+      ] ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (builtins.genList (i:
+          let ws = i + 1;
+          in [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          )
+        9)
+      );
+      bindm = [
+        # mouse movements
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+        "$mod ALT, mouse:272, resizewindow"
+      ];
+    };
+    extraConfig = ''
+      input {
+        kb_layout = de
+        follow_mouse = 1
+      }
+    '';
+  };
+
+  programs = {
 
     waybar = {
       catppuccin.enable = true;
@@ -333,7 +383,12 @@ in {
       '';
     };
 
-
+    rofi = {
+      enable = true;
+      location = "center";
+      font = "Fira Code";
+      catppuccin.enable = true;
+    };
 
   };
 }

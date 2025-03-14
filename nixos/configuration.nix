@@ -119,6 +119,9 @@
   # KDE Connect
   programs.kdeconnect.enable = true;
 
+  # Add Hyprland system-wide
+  programs.hyprland.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
